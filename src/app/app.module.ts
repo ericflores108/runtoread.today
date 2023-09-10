@@ -16,6 +16,15 @@ import {
   HttpClientModule,
 } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
+import { StatsComponent } from './stats/stats.component';
+import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { GoalComponent } from './goal/goal.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -23,6 +32,8 @@ import { AuthInterceptor } from './auth.interceptor';
     AboutComponent,
     RedirectComponent,
     HomeComponent,
+    StatsComponent,
+    GoalComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +43,13 @@ import { AuthInterceptor } from './auth.interceptor';
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
+    FormsModule,
+    MatTableModule,
+    MatRadioModule,
+    MatInputModule,
+    MatOptionModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [
     StravaService,

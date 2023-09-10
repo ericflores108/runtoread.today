@@ -20,8 +20,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.queryParams = this.route.snapshot.queryParams;
-    if (this.queryParams.code) {
-      console.log(this.queryParams.code);
+    if (this.queryParams.code && !localStorage.getItem('athleteId')) {
       this.stravaService.loginWithCode(this.queryParams.code);
     }
   }
