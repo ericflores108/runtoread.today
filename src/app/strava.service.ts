@@ -20,6 +20,7 @@ export class StravaService {
         // set data to local storage
         localStorage.setItem('athleteId', data?.athlete?.id);
         console.log(data);
+        this.getAllStats();
         this.athleteIdSet.emit(data?.athlete?.id);
       });
   }

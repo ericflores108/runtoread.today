@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     const athleteId = parseInt(localStorage.getItem('athleteId') || '0');
     if (athleteId) {
       this.athleteId = athleteId;
-    } else if (!this.route.snapshot.queryParams) {
+    } else if (!this.route.snapshot.queryParams['code']) {
       this._bottomSheet.open(RegisterComponent);
     }
   }
