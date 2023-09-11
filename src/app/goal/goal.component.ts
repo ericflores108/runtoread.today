@@ -17,7 +17,6 @@ export class GoalComponent {
 
   onSubmit() {
     // Handle form submission here, e.g., send data to server
-    console.log('Form submitted with data:', this.formData);
     const athleteId = parseInt(localStorage.getItem('athleteId') || '0');
     if (!athleteId) {
       console.error('No athleteId found in local storage');

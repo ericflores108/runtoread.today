@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,17 +10,16 @@ export class StravaService {
   api = environment.api;
   stats: any[] = [];
   athleteIdSet = new EventEmitter<number>();
+  goalSet = new EventEmitter<void>();
 
   constructor(private httpClient: HttpClient) {}
 
   loginWithCode(code: string): void {
-    console.log(code);
     this.httpClient
       .post(`${this.api}/code`, { code: code })
       .subscribe((data: any) => {
         // set data to local storage
         localStorage.setItem('athleteId', data?.athlete?.id);
-        console.log(data);
         this.getAllStats();
         this.athleteIdSet.emit(data?.athlete?.id);
       });
@@ -27,7 +27,10 @@ export class StravaService {
 
   getAllStats(): void {
     this.httpClient.get(`${this.api}/stats/all`).subscribe((data: any) => {
-      console.log(data);
+      catchError((err) => {
+        console.error(err);
+        return err;
+      });
       this.stats = data?.stats;
     });
   }
@@ -35,8 +38,11 @@ export class StravaService {
   setKudos({ athleteId, kudos }: { athleteId: number; kudos: number }): void {
     this.httpClient
       .post(`${this.api}/athlete/${athleteId}/kudos/${kudos}`, {})
-      .subscribe((data: any) => {
-        console.log(data);
+      .subscribe(() => {
+        catchError((err) => {
+          console.error(err);
+          return err;
+        });
       });
   }
 
@@ -54,9 +60,13 @@ export class StravaService {
         goal,
         unit,
       })
-      .subscribe((data: any) => {
-        console.log(data);
+      .subscribe(() => {
+        catchError((err) => {
+          console.error(err);
+          return err;
+        });
         this.getAllStats();
+        this.goalSet.emit();
       });
   }
 }

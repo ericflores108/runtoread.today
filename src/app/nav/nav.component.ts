@@ -2,6 +2,7 @@ import { Component, Input, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { StravaService } from '../strava.service';
 
 interface Views {
   [key: string]: any;
@@ -20,6 +21,12 @@ export class NavComponent {
     goal: false,
     about: false,
   };
+
+  constructor(private stravaService: StravaService) {
+    this.stravaService.goalSet.subscribe(() => {
+      this.changeView('stats');
+    });
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)

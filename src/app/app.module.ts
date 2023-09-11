@@ -32,6 +32,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { RegisterComponent } from './register/register.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { RegisterComponent } from './register/register.component';
     MatSidenavModule,
     MatListModule,
     MatBottomSheetModule,
+    MatTooltipModule,
   ],
   providers: [
     StravaService,

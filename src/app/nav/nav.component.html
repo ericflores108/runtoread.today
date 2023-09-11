@@ -27,12 +27,9 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <div class="spacer-container">
-        <span class="spacer">runtoread.today</span>
-        <span class="spacer">
-          <app-redirect *ngIf="!athleteId"></app-redirect>
-        </span>
-      </div>
+      <span>runtoread.today</span>
+      <span class="spacer"> </span>
+      <app-redirect *ngIf="!athleteId"></app-redirect>
     </mat-toolbar>
     <app-stats *ngIf="views['stats']"></app-stats>
     <app-goal *ngIf="views['goal']"></app-goal>
