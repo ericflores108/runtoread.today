@@ -1,15 +1,36 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { StravaService } from '../strava.service';
 
 @Component({
   selector: 'app-goal',
   templateUrl: './goal.component.html',
   styleUrls: ['./goal.component.css'],
 })
-export class GoalComponent implements OnInit {
-  goal: number = 0; // Initialize with a default goal value
-  selectedUnit: string = 'km'; // Initialize with 'km'
+export class GoalComponent {
+  formData = {
+    goal: null, // Initialize with a default goal value or set to null
+    unit: 'km', // Initialize with a default unit value (e.g., 'km' or 'miles')
+  };
 
-  constructor() {}
+  constructor(private stravaService: StravaService) {}
 
-  ngOnInit(): void {}
+  onSubmit() {
+    // Handle form submission here, e.g., send data to server
+    console.log('Form submitted with data:', this.formData);
+    const athleteId = parseInt(localStorage.getItem('athleteId') || '0');
+    if (!athleteId) {
+      console.error('No athleteId found in local storage');
+      return;
+    }
+    if (!this.formData.goal) {
+      console.error('No goal found in form data');
+      return;
+    }
+    this.stravaService.setGoal({
+      athleteId,
+      goal: this.formData.goal,
+      unit: this.formData.unit,
+    });
+  }
 }

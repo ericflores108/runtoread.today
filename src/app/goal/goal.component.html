@@ -1,11 +1,24 @@
-<mat-form-field>
-  <mat-label>Goal</mat-label>
-  <input type="number" matInput />
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Unit</mat-label>
-  <mat-select>
-    <mat-option value="km">KM</mat-option>
-    <mat-option value="miles">Miles</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="goal-container">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <mat-form-field>
+      <mat-label>Goal</mat-label>
+      <input
+        type="number"
+        matInput
+        name="goal"
+        [(ngModel)]="formData.goal"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Unit</mat-label>
+      <mat-select name="unit" [(ngModel)]="formData.unit" required>
+        <mat-option value="km">KM</mat-option>
+        <mat-option value="miles">Miles</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-raised-button [disabled]="form.invalid">
+      Submit
+    </button>
+  </form>
+</div>

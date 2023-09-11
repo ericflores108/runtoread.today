@@ -13,15 +13,27 @@ export class HomeComponent implements OnInit {
     scope?: string;
     state?: string;
   } = {};
+  athleteId: number | null = null;
+
   constructor(
     private route: ActivatedRoute,
     private stravaService: StravaService
-  ) {}
+  ) {
+    const athleteId = parseInt(localStorage.getItem('athleteId') || '0');
+    if (athleteId) {
+      this.athleteId = athleteId;
+    }
+  }
 
   ngOnInit(): void {
     this.queryParams = this.route.snapshot.queryParams;
     if (this.queryParams.code && !localStorage.getItem('athleteId')) {
       this.stravaService.loginWithCode(this.queryParams.code);
     }
+    this.stravaService.athleteIdSet.subscribe((athleteId) => {
+      if (athleteId) {
+        this.athleteId = athleteId;
+      }
+    });
   }
 }

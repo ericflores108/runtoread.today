@@ -25,6 +25,11 @@ import { GoalComponent } from './goal/goal.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { NavComponent } from './nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
     HomeComponent,
     StatsComponent,
     GoalComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [
     StravaService,

@@ -1,0 +1,15 @@
+/* your-component.component.css */
+.goal-container {
+  max-width: 400px; /* Adjust the maximum width to your preference */
+  margin: 0 auto; /* Center the form horizontally */
+  padding: 20px; /* Add padding to create spacing around the form */
+}
+
+mat-form-field {
+  width: 100%; /* Make the form fields take the full width of the container */
+  margin-bottom: 15px; /* Add space between form fields */
+}
+
+button[type="submit"] {
+  width: 100%; /* Make the submit button take the full width of the container */
+}
