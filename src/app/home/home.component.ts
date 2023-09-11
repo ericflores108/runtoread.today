@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StravaService } from '../strava.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +19,14 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private stravaService: StravaService
+    private stravaService: StravaService,
+    private _bottomSheet: MatBottomSheet
   ) {
     const athleteId = parseInt(localStorage.getItem('athleteId') || '0');
     if (athleteId) {
       this.athleteId = athleteId;
+    } else if (!this.route.snapshot.queryParams) {
+      this._bottomSheet.open(RegisterComponent);
     }
   }
 

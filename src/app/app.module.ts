@@ -30,6 +30,8 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { MatListModule } from '@angular/material/list';
     StatsComponent,
     GoalComponent,
     NavComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    MatBottomSheetModule,
   ],
   providers: [
     StravaService,
