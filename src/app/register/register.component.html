@@ -1,0 +1,15 @@
+<mat-nav-list>
+  <a
+    href="https://keep.google.com/"
+    mat-list-item
+    (click)="openLink($event, true)"
+  >
+    <span matListItemTitle>Connect to Strava</span>
+    <span matLine>Connect to Strava to list total miles and create goals</span>
+  </a>
+
+  <a mat-list-item (click)="openLink($event, false)">
+    <span matListItemTitle>Dismiss</span>
+    <span matLine>View table and give likes</span>
+  </a>
+</mat-nav-list>
