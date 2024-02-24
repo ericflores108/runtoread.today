@@ -28,4 +28,8 @@ export class StatsComponent implements OnInit {
       kudos: element.user.kudos,
     });
   }
+
+  userLink(athleteId: number) {
+    return `https://www.strava.com/athletes/${athleteId}`;
+  }
 }
